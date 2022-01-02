@@ -1,11 +1,5 @@
 <?php
 
-$number = $_POST['number'];
-
-$result = getResult($number);
-
-echo "<h2>" . $result . "</h2>";
-
 function getResult($a)
 {
     if ($a >= 80 && $a <= 100) {
@@ -23,4 +17,15 @@ function getResult($a)
     } else {
         return "You got F";
     }
+}
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    $number = $_POST['number'];
+
+    $result = getResult($number);
+
+    echo "<h2>" . $result . "</h2>";
+} else {
+    header("Location: index.php");
 }
